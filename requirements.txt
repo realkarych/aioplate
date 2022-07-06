@@ -3,5 +3,4 @@ asyncpg==0.25.0
 sqlalchemy==1.4.39
 alembic==1.8.0
 tzlocal==4.2
-APScheduler==3.9.1
 pydantic==1.9.1
