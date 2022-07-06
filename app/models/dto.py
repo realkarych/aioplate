@@ -10,6 +10,8 @@ from app.models import database
 
 @dataclass
 class User:
+    """User DTO: database & telegram user."""
+
     id: int
     username: str | None = None
     firstname: str | None = None
@@ -17,6 +19,11 @@ class User:
 
     @classmethod
     def from_aiogram(cls, user: tg.User) -> User:
+        """
+        :param user: Telegram user
+        :return: DTO
+        """
+
         return cls(
             id=user.id,
             username=user.username,
@@ -26,6 +33,11 @@ class User:
 
     @classmethod
     def from_db(cls, user: database.User) -> User:
+        """
+        :param user: Database user
+        :return: DTO
+        """
+
         return cls(
             id=user.id,
             username=user.username,
