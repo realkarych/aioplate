@@ -1,0 +1,12 @@
+[Unit]
+Description=
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=
+ExecStart=<...>/venv/bin/python .
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
