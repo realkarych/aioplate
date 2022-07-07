@@ -1,4 +1,4 @@
-from typing import List, TypeVar, Type, Generic
+from typing import TypeVar, Type, Generic
 
 from sqlalchemy import delete, func
 from sqlalchemy.future import select
@@ -21,7 +21,7 @@ class BaseDAO(Generic[Model]):
         self._model = model
         self._session = session
 
-    async def get_all(self) -> List[Model]:
+    async def get_all(self) -> list[Model]:
         """
         :return: List of models.
         """
