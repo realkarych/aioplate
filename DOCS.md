@@ -40,10 +40,47 @@
     - `sudo systemctl start app.service`
     - Check status: `sudo systemctl status app.service`
 
-**If you launched bot polling, and no errors occurred, after submitting /start command to your Bot, welcome message
+**If you started app, and no errors occurred, after submitting /start command to your Bot, welcome message
 should be sent.**
 
 ✔ **Well Done!**
 
-
 ## Style guides
+
+### Handlers
+
+- Should be tiny: about 10-15 lines of code.
+- No business logic: connection with API services, ORM queries, http requests etc.
+  All this functionality should be realized in services and provide the interface to connect them from view.
+- Docstrings with description of functionality for all handlers.
+- No more than 4 decorators on each handler.
+
+### Messages
+
+- To have an obvious structure and logic for storing messages,
+  you should have the **duplicated architecture in messages and handlers package.**
+  **_For example:_** If handler-module is private chat package named `new_user`,
+  create the messages-storage-file with same name in messages/private_chat package.   
+  *You can check my example with new_user.*
+- **No cross-imports!** Your handler-module should import only one messages storage. E.g.: new_user should import
+  only new_user as msgs message storage; and do not import another messages from any files.
+  In this case, do not be afraid of possible duplication of texts in different files. This will further prevent
+  cross-handlers-changes and text side effects.
+- I suggest using the `msgs` name for the abbreviation of message storage in all handlers. This will ensure the same
+  interface to call messages storage.
+
+### Docs & tests & CI
+
+- I configured default pylint checkers. Aioplate has a full coverage of docstrings.
+  In some cases, writing docstrings is unnecessary, and you can disable this checker.
+- I don't write unit tests for bot & aiogram logic. Only for business-logic.
+  But up to you. Some people want to have 100% test coverage, and I have nothing against them.
+
+## Contribution
+
+**Feel free to contribute for Aioplate. If you integrate new technologies, you are responsible for the
+additions to the documentation (DOCS.md). So, I will not accept pull requests that will not pass code-style
+coverage (GitHub actions pylint tests).**
+
+**So, if you have any problems with Aioplate, feel free to open issues on GitHub or ping me in Telegram:
+https://t.me/karych.**

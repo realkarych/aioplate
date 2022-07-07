@@ -1,8 +1,9 @@
-import logging
 import types
 from abc import ABC, abstractmethod
 
 from aiogram import Dispatcher
+
+from app.exceptions.handler import RegisterHandlerError
 
 
 class HandlersFactory(ABC):
@@ -31,14 +32,16 @@ class DefaultHandlersFactory(HandlersFactory):
         """
 
         for handler in handlers:
-
             if isinstance(handler, types.ModuleType):
                 try:
                     handler.register_handlers(dp=self._dp)
                 except AttributeError as error:
-                    logging.error("register_handlers() method wasn't implemented "
-                                  "in %s", str(error.obj))
-
+                    raise RegisterHandlerError(
+                        f"register_handlers() method wasn't implemented "
+                        f"in {str(error.obj)}"
+                    )
             else:
-                logging.error("%s from submitted args to `register_handlers()` "
-                              "is not a .py module", handler)
+                raise RegisterHandlerError(
+                    f"{handler} from submitted args to `register_handlers()` "
+                    f"is not a .py module"
+                )
