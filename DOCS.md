@@ -54,6 +54,7 @@ should be sent.**
   All this functionality should be realized in services and provide the interface to connect them from view.
 - Docstrings with description of functionality for all handlers.
 - No more than 4 decorators on each handler.
+- Use same titles for message instances, callback-query instances in all handlers. For message use `m`, for callback use `call`.
 
 ### Messages
 
