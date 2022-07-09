@@ -1,6 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.types import ChatType
 
+from app.core.keyboards import reply
 from app.core.messages.private_chat import new_user as msgs
 from app.core.middlewares.throttling import throttle
 from app.core.navigations.command import Commands
@@ -16,7 +17,7 @@ async def cmd_start(m: types.Message):
     session = UserDAO(session=m.bot.get("db"))
     await session.add_user(user)
 
-    await m.answer(msgs.welcome(user_firsname=user.firstname), reply_markup=None)
+    await m.answer(msgs.welcome(user_firstname=user.firstname), reply_markup=reply.default)
 
 
 def register_handlers(dp: Dispatcher) -> None:
