@@ -9,7 +9,7 @@ parse_mode = str
 
 @dataclass
 class Bot:
-    """DAO: Bot config"""
+    """Bot config"""
 
     token: str
     parse_mode: str
@@ -17,7 +17,7 @@ class Bot:
 
 @dataclass
 class DB:
-    """DAO: Database config"""
+    """Database config"""
 
     host: str
     port: int
