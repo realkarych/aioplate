@@ -29,10 +29,10 @@
     - Open alembic.ini -> `sqlalchemy.url = postgresql+asyncpg://DB_OWNER:DB_OWNER_PASSWD@localhost/DB_NAME`
 
 5) Configure python-app & dependencies:
-    - `python3.9.x -m venv venv`
-    - `source venv/bin/activate`
-    - `pip install -r requirements.txt`
-    - Execute `__main__.py` script
+    - Note: You need to have Poetry installed: `pip install poetry`
+    - Install dependencies: `poetry install`
+    - Start the bot: `make run`.
+
 6) It is highly recommended for deployment (Ubuntu / Debian):
     - Configure app.service file.
     - `cp app.service etc/systemd/system/`
