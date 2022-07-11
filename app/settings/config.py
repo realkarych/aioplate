@@ -64,7 +64,7 @@ def load_config() -> Config:
 
     # If developer wasn't created app.ini configuration file, raising an exception
     if not os.path.exists(config_file_path):
-        raise NotImplementedError("app.ini wasn't created!")
+        raise ValueError("app.ini wasn't created!")
 
     config = configparser.ConfigParser()
     config.read(config_file_path)
