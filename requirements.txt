@@ -1,0 +1,6 @@
+aiogram==2.21
+asyncpg==0.26.0
+sqlalchemy==1.4.39
+alembic==1.8.0
+tzlocal==4.2
+pydantic==1.9.1
