@@ -67,15 +67,15 @@ should be sent.**
 
 - To have an obvious structure and logic for storing messages,
   you should have the **duplicated architecture in messages and handlers package.**
-  **_For example:_** If handler-module is private chat package named `new_user`,
+  **_For example:_** If handler-module is private chat package named `base`,
   create the messages-storage-file with same name in messages/private_chat package.   
-  *You can check my example with new_user.*
-- **No cross-imports!** Your handler-module should import only one messages storage. E.g.: new_user should import
-  only new_user as msgs message storage; and do not import another messages from any files.
+  *You can check my example with base handler.*
+- **No cross-imports!** Your handler-module should import only one messages storage. E.g.: `base` handler should import
+  only `base as msgs` message storage; and do not import another messages from any files.
   In this case, do not be afraid of possible duplication of texts in different files. This will further prevent
   cross-handlers-changes and text side effects.
 - I suggest using the `msgs` name for the abbreviation of message storage in all handlers. This will ensure the same
-  interface to call messages storage.
+  interface to call message storages.
 
 ### Docs & tests & CI
 

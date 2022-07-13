@@ -19,6 +19,7 @@ class UserDAO(BaseDAO[User]):
         """
 
         async with self._session() as session:
-            await session.merge(mapper.map_to_db_user(user))
+            user = mapper.map_to_db_user(user)
+            await session.merge(user)
             await session.commit()
-            return user
+            return user.from_db(user)

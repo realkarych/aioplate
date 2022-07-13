@@ -1,6 +1,6 @@
 [bot]
 token =
-parse_mode = set HTML or MarkdownV2. HTML is default.
+parse_mode = HTML
 
 [db]
 host = localhost

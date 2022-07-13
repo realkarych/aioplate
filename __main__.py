@@ -8,7 +8,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 from app.core import middlewares
 from app.core.handlers.factory import DefaultHandlersFactory
-from app.core.handlers.private_chat import new_user
+from app.core.handlers.private_chat import base
 from app.core.navigations.command import set_bot_commands
 from app.core.updates import worker
 from app.services.database.connector import setup_get_pool
@@ -18,6 +18,7 @@ from app.settings import config as _config
 async def main() -> None:
     """Starts app & polling."""
 
+    # In prod, add `filename=` arg and write your logs to file instead of stdout
     logging.basicConfig(
         level=logging.WARNING,
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
@@ -33,7 +34,7 @@ async def main() -> None:
     # Middlewares setup. Register middlewares provided to __init__.py in middlewares package.
     middlewares.setup(dispatcher=dp)
     # Provide your default handler-modules into register() func.
-    DefaultHandlersFactory(dp).register(new_user, )
+    DefaultHandlersFactory(dp).register(base, )
 
     try:
         await dp.start_polling(allowed_updates=worker.get_handled_updates(dp))

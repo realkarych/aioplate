@@ -15,7 +15,7 @@ class ResizedReplyKeyboard(ReplyKeyboardMarkup):
 
 
 # Customize your keyboard here
-default = ResizedReplyKeyboard(
+default_menu = ResizedReplyKeyboard(
     keyboard=[
         [
             KeyboardButton(reply.some_text)
