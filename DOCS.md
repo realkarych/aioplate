@@ -28,18 +28,24 @@
       app.services.database.base
     - Open alembic.ini -> `sqlalchemy.url = postgresql+asyncpg://DB_OWNER:DB_OWNER_PASSWD@localhost/DB_NAME`
 
-5) Configure python-app & dependencies:
-    - Note: You need to have Poetry installed: `pip install poetry`
-    - Install dependencies: `poetry install`
-    - Start the bot: `make run`
-    - Update dependencies*: `poetry update`
+5) You have 2 default ways to configure project.
+   1) Configure python-app & dependencies with pip:
+      - Create venv: `python3.10 -m venv venv`
+      - Activate venv: `source venv/bin/activate`
+      - Install dependencies: `pip install -r requirements.txt`
+      - Run app: `python .`
+   2) Configure python-app & dependencies with poetry:
+      - Note: You need to have Poetry installed: `pip install poetry`
+      - Install dependencies: `poetry install`
+      - Run app: `make run`
+      - Update dependencies*: `poetry update`
 
 6) It is highly recommended for deployment (Ubuntu / Debian):
     - Configure app.service file.
-    - `cp app.service etc/systemd/system/`
-    - `sudo systemctl enable app.service`
-    - `sudo systemctl start app.service`
-    - Check status: `sudo systemctl status app.service`
+    - `cp app.service etc/systemd/system/YOUR_APP_NAME.service`
+    - `sudo systemctl enable YOUR_APP_NAME.service`
+    - `sudo systemctl start YOUR_APP_NAME.service`
+    - Check status: `sudo systemctl status YOUR_APP_NAME.service`
 
 **If you started app, and no errors occurred, after submitting /start command to your Bot, welcome message
 should be sent.**
