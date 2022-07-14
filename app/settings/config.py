@@ -4,13 +4,10 @@ from dataclasses import dataclass
 
 from app.settings import paths
 
-parse_mode = str
-
 
 @dataclass
 class Bot:
     """Bot config"""
-
     token: str
     parse_mode: str
 
@@ -18,7 +15,6 @@ class Bot:
 @dataclass
 class DB:
     """Database config"""
-
     host: str
     port: int
     name: str
@@ -33,34 +29,29 @@ class DB:
 @dataclass
 class Config:
     """Configurator"""
-
     bot: Bot
     db: DB
 
 
-def get_parse_mode(bot_section: configparser.SectionProxy) -> parse_mode:
+def get_parse_mode(bot_section: configparser.SectionProxy) -> str:
     """
     Get & return parse mode. Provides to bot instance.
     :param bot_section: configparser section
     """
 
-    _parse_mode: parse_mode
-
     try:
-        _parse_mode = bot_section["parse_mode"] if bot_section["parse_mode"] in \
-                                                   ("HTML", "MarkdownV2") else "HTML"
-
+        if bot_section["parse_mode"] in ("HTML", "MarkdownV2"):
+            return bot_section["parse_mode"]
+        return "HTML"
     # Param parse_mode isn't set in app.ini. HTML will be set.
     except KeyError:
-        _parse_mode = "HTML"
-
-    return _parse_mode
+        return "HTML"
 
 
 def load_config() -> Config:
     """Load and return bot configuration data"""
 
-    config_file_path = paths.get_project_root() / "app.ini"
+    config_file_path = paths.ROOT_DIR / "app.ini"
 
     # If developer wasn't created app.ini configuration file, raising an exception
     if not os.path.exists(config_file_path):

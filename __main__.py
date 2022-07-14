@@ -12,7 +12,7 @@ from app.core.handlers.private_chat import base
 from app.core.navigations.command import set_bot_commands
 from app.core.updates import worker
 from app.services.database.connector import setup_get_pool
-from app.settings import config as _config
+from app.settings.config import Config, load_config
 
 
 async def main() -> None:
@@ -24,7 +24,7 @@ async def main() -> None:
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
     )
 
-    config: _config.Config = _config.load_config()
+    config: Config = load_config()
 
     bot = Bot(config.bot.token, parse_mode=config.bot.parse_mode)
     bot["db"] = await setup_get_pool(db_uri=config.db.get_uri())
@@ -41,8 +41,7 @@ async def main() -> None:
     finally:
         await dp.storage.close()
         await dp.storage.wait_closed()
-        session = await bot.get_session()
-        await session.close()
+        await (await bot.get_session()).close()
 
 
 if __name__ == "__main__":
