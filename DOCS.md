@@ -21,12 +21,11 @@
 
 4) Configure Postgres & alembic:
     - PSQL: `CREATE DATABASE your_database_name;`
-    - `alembic init --template async migrations`
-    - `alembic revision --autogenerate -m "init"`
+    - Already made:  `alembic init --template async migrations`
+    - Open alembic.ini -> `sqlalchemy.url = postgresql+asyncpg://user:pass@localhost/dbname`
+    - `alembic revision --autogenerate -m "init"` 
     - `alembic upgrade head`
-    - Open migrations/env.py -> `target_metadata = Base.metadata`. DON'T FORGET import Base from
-      app.services.database.base
-    - Open alembic.ini -> `sqlalchemy.url = postgresql+asyncpg://DB_OWNER:DB_OWNER_PASSWD@localhost/DB_NAME`
+    - Add alembic.ini to gitignore
 
 5) You have 2 default ways to configure project.
    1) Configure python-app & dependencies with pip:
@@ -38,7 +37,7 @@
       - Note: You need to have Poetry installed: `pip install poetry`
       - Install dependencies: `poetry install`
       - Run app: `make run`
-      - Update dependencies*: `poetry update`
+      - Update dependencies: `poetry update`
 
 6) It is highly recommended for deployment (Ubuntu / Debian):
     - Configure app.service file.
