@@ -23,21 +23,21 @@
     - PSQL: `CREATE DATABASE your_database_name;`
     - Already made:  `alembic init --template async migrations`
     - Open alembic.ini -> `sqlalchemy.url = postgresql+asyncpg://user:pass@localhost/dbname`
-    - `alembic revision --autogenerate -m "init"` 
+    - `alembic revision --autogenerate -m "init"`
     - `alembic upgrade head`
     - Add alembic.ini to gitignore
 
 5) You have 2 default ways to configure project.
-   1) Configure python-app & dependencies with pip:
-      - Create venv: `python3.10 -m venv venv`
-      - Activate venv: `source venv/bin/activate`
-      - Install dependencies: `pip install -r requirements.txt`
-      - Run app: `python .`
-   2) Configure python-app & dependencies with poetry:
-      - Note: You need to have Poetry installed: `pip install poetry`
-      - Install dependencies: `poetry install`
-      - Run app: `make run`
-      - Update dependencies: `poetry update`
+    1) Configure python-app & dependencies with pip:
+        - Create venv: `python3.10 -m venv venv`
+        - Activate venv: `source venv/bin/activate`
+        - Install dependencies: `pip install -r requirements.txt`
+        - Run app: `python .`
+    2) Configure python-app & dependencies with poetry:
+        - Note: You need to have Poetry installed: `pip install poetry`
+        - Install dependencies: `poetry install`
+        - Run app: `make run`
+        - Update dependencies: `poetry update`
 
 6) It is highly recommended for deployment (Ubuntu / Debian):
     - Configure app.service file.
@@ -60,7 +60,8 @@ should be sent.**
   All this functionality should be realized in services and provide the interface to connect them from view.
 - Docstrings with description of functionality for all handlers.
 - No more than 4 decorators on each handler.
-- Use same titles for message instances, callback-query instances in all handlers. For message use `m`, for callback use `call`.
+- Use same titles for message instances, callback-query instances in all handlers. For message use `m`, for callback
+  use `call`.
 
 ### Messages
 
