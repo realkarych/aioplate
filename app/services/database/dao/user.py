@@ -12,14 +12,12 @@ class UserDAO(BaseDAO[User]):
     def __init__(self, session: sessionmaker):
         super().__init__(User, session)
 
-    async def add_user(self, user: dto.User) -> dto.User:
+    async def add_user(self, user: dto.User) -> None:
         """
         Add user to database if not added yet. If added, tries to update parameters.
         :param user: Telegram user.
         """
 
         async with self._session() as session:
-            user = mapper.map_to_db_user(user)
-            await session.merge(user)
+            await session.merge(mapper.map_to_db_user(user))
             await session.commit()
-            return user.from_db(user)
