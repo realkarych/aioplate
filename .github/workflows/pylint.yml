@@ -21,4 +21,4 @@ jobs:
           pip install pylint
       - name: Analysing the code with pylint
         run: |
-          pylint $(git ls-files '*.py') --disable=no-name-in-module,invalid-name,no-self-argument,super-with-arguments,unused-argument,raise-missing-from,missing-module-docstring,too-few-public-methods
+          pylint $(git ls-files '*.py') --disable=no-name-in-module,invalid-name,no-self-argument,super-with-arguments,unused-argument,raise-missing-from,missing-module-docstring,too-few-public-methods,no-member
