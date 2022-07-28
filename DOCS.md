@@ -7,8 +7,7 @@
 - **Python 3.9.x** and higher
 - **Aiogram 2.x**
 - **Aiogram MemoryStorage** for temporary data. You can replace it with **RedisStorage2** & aioredis.
-- **PostgreSQL** (**SQLAlchemy** as ORM + **asyncpg** as driver + **alembic** as migrations helper).
-- **Pydantic** as a tool for data validation & parsing.
+- **PostgreSQL** (**SQLAlchemy** as an ORM + **asyncpg** as a driver + **alembic** as a migration service).
 
 ## Installation
 
@@ -60,28 +59,27 @@ should be sent.**
   All this functionality should be realized in services and provide the interface to connect them from view.
 - Docstrings with description of functionality for all handlers.
 - No more than 4 decorators on each handler.
-- Use same titles for message instances, callback-query instances in all handlers. For message use `m`, for callback
-  use `call`.
+- Use same titles for message instances, callback-query instances in all handlers.
 
 ### Messages
 
 - To have an obvious structure and logic for storing messages,
   you should have the **duplicated architecture in messages and handlers package.**
   **_For example:_** If handler-module is private chat package named `base`,
-  create the messages-storage-file with same name in messages/private_chat package.   
+  create the messages storage file with same name in messages/private_chat package.   
   *You can check my example with base handler.*
 - **No cross-imports!** Your handler-module should import only one messages storage. E.g.: `base` handler should import
   only `base as msgs` message storage; and do not import another messages from any files.
   In this case, do not be afraid of possible duplication of texts in different files. This will further prevent
   cross-handlers-changes and text side effects.
-- I suggest using the `msgs` name for the abbreviation of message storage in all handlers. This will ensure the same
-  interface to call message storages.
+- I suggest using the `msgs` name for the abbreviation of messages storage in all handlers. This will ensure the same
+  interface to call them.
 
 ### Docs & tests & CI
 
 - I configured default pylint checkers. Aioplate has a full coverage of docstrings.
   In some cases, writing docstrings is unnecessary, and you can disable this checker.
-- I don't write unit tests for bot & aiogram logic. Only for business-logic.
+- I don't write unit tests for bot UI & logic.
   But up to you. Some people want to have 100% test coverage, and I have nothing against them.
 
 ## Contribution
