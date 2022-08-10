@@ -2,6 +2,7 @@
 
 import asyncio
 import logging
+from logging.handlers import RotatingFileHandler
 
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
@@ -13,6 +14,7 @@ from app.core.navigations.command import set_bot_commands
 from app.core.updates import worker
 from app.services.database.connector import setup_get_pool
 from app.settings.config import Config, load_config
+from app.settings.paths import ROOT_DIR
 
 
 async def main() -> None:
@@ -21,7 +23,8 @@ async def main() -> None:
     # In prod, add `filename=` arg and write your logs to file instead of stdout
     logging.basicConfig(
         level=logging.WARNING,
-        format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+        format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+        filename=f"{ROOT_DIR}/base.log"
     )
 
     config: Config = load_config()
