@@ -26,17 +26,12 @@
     - `alembic upgrade head`
     - Add alembic.ini to gitignore
 
-5) You have 2 default ways to configure project.
-    1) Configure python-app & dependencies with pip:
-        - Create venv: `python3.10 -m venv venv`
-        - Activate venv: `source venv/bin/activate`
-        - Install dependencies: `pip install -r requirements.txt`
-        - Run app: `python .`
-    2) Configure python-app & dependencies with poetry:
-        - Note: You need to have Poetry installed: `pip install poetry`
-        - Install dependencies: `poetry install`
-        - Run app: `make run`
-        - Update dependencies: `poetry update`
+5)
+    Configure environment with poetry:
+     - Note: You need to have Poetry installed: `pip install poetry`
+     - Install dependencies: `poetry install`
+     - Run app: `make run`
+     - Update dependencies*: `poetry update`
 
 6) It is highly recommended for deployment (Ubuntu / Debian):
     - Configure app.service file.
@@ -74,19 +69,3 @@ should be sent.**
   cross-handlers-changes and text side effects.
 - I suggest using the `msgs` name for the abbreviation of messages storage in all handlers. This will ensure the same
   interface to call them.
-
-### Docs & tests & CI
-
-- I configured default pylint checkers. Aioplate has a full coverage of docstrings.
-  In some cases, writing docstrings is unnecessary, and you can disable this checker.
-- I don't write unit tests for bot UI & logic.
-  But up to you. Some people want to have 100% test coverage, and I have nothing against them.
-
-## Contribution
-
-**Feel free to contribute for Aioplate. If you integrate new technologies, you are responsible for the
-additions to the documentation (DOCS.md). So, I will not accept pull requests that will not pass code-style
-coverage (GitHub actions pylint tests).**
-
-**So, if you have any problems with Aioplate, feel free to open issues on GitHub or ping me in Telegram:
-https://t.me/karych.**

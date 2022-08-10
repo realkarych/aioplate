@@ -25,5 +25,3 @@
 ...
 
 ## Credits
-
-- **App template: <a href="https://github.com/devkarych">Karych</a>.**

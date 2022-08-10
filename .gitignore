@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 app.ini
 .idea/
+poetry.lock

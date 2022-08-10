@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=path/to/root/of/project
-ExecStart=<...>/venv/bin/python .
+ExecStart=make run
 Restart=always
 
 [Install]
