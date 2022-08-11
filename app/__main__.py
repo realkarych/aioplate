@@ -2,7 +2,6 @@
 
 import asyncio
 import logging
-from logging.handlers import RotatingFileHandler
 
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage

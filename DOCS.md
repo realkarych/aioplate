@@ -26,12 +26,11 @@
     - `alembic upgrade head`
     - Add alembic.ini to gitignore
 
-5)
-    Configure environment with poetry:
-     - Note: You need to have Poetry installed: `pip install poetry`
-     - Install dependencies: `poetry install`
-     - Run app: `make run`
-     - Update dependencies*: `poetry update`
+5) Configure environment with poetry:
+    - Note: You need to have Poetry installed: `pip install poetry`
+    - Install dependencies: `poetry install`
+    - Run app: `make run`
+    - Update dependencies*: `poetry update`
 
 6) It is highly recommended for deployment (Ubuntu / Debian):
     - Configure app.service file.
