@@ -23,7 +23,7 @@ async def main() -> None:
     logging.basicConfig(
         level=logging.WARNING,
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
-        filename=f"{ROOT_DIR}/base.log"
+        filename=f"{ROOT_DIR}/error.log"
     )
 
     config: Config = load_config()
