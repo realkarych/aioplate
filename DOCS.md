@@ -43,28 +43,3 @@
 should be sent.**
 
 ✔ **Well Done!**
-
-## Style guides
-
-### Handlers
-
-- Should be tiny: about 10-15 lines of code.
-- No business logic: connection with API services, ORM queries, http requests etc.
-  All this functionality should be realized in services and provide the interface to connect them from view.
-- Docstrings with description of functionality for all handlers.
-- No more than 4 decorators on each handler.
-- Use same titles for message instances, callback-query instances in all handlers.
-
-### Messages
-
-- To have an obvious structure and logic for storing messages,
-  you should have the **duplicated architecture in messages and handlers package.**
-  **_For example:_** If handler-module is private chat package named `base`,
-  create the messages storage file with same name in messages/private_chat package.   
-  *You can check my example with base handler.*
-- **No cross-imports!** Your handler-module should import only one messages storage. E.g.: `base` handler should import
-  only `base as msgs` message storage; and do not import another messages from any files.
-  In this case, do not be afraid of possible duplication of texts in different files. This will further prevent
-  cross-handlers-changes and text side effects.
-- I suggest using the `msgs` name for the abbreviation of messages storage in all handlers. This will ensure the same
-  interface to call them.
