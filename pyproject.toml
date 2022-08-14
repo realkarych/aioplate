@@ -6,7 +6,7 @@ authors = ["Andrey Karchevsky <karych@karych.ru>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-aiogram = "2.21"
+aiogram = "^2.21"
 asyncpg = "^0.26.0"
 sqlalchemy = "^1.4.39"
 alembic = "^1.8.0"
