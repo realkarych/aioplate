@@ -50,5 +50,5 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
-        # Log this is pointless
+        # Logging this is pointless
         pass

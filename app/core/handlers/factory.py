@@ -45,6 +45,6 @@ class DefaultHandlersFactory(HandlersFactory):
                     )
             else:
                 raise RegisterHandlerError(
-                    f"{handler} from submitted args to `register_handlers()` "
+                    f"`{handler}` from submitted args to `register()` "
                     f"is not a .py module"
                 )

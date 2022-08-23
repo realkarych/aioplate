@@ -9,7 +9,7 @@ from aiogram.types import BotCommand, BotCommandScopeDefault
 class Command:
     """
     Command object is dto for organize the same interface to access /command
-    data in handlers & in commands-factory & in registrar.
+    data in handlers & in commands-factory & in registrator.
     """
 
     name: str
