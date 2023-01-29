@@ -1,12 +1,13 @@
 [Unit]
-Description=
+Description=Telegram bot
 After=network.target
 
 [Service]
-Type=simple
-WorkingDirectory=path/to/root/of/project
-ExecStart=make run
-Restart=always
+User=www
+WorkingDirectory=
+Restart=on-failure
+RestartSec=2s
+ExecStart=PATH -m app
 
 [Install]
 WantedBy=multi-user.target
