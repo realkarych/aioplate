@@ -7,6 +7,5 @@ def welcome(user_firstname: str) -> str:
     :return: welcome message to user
     """
 
-    return bold(f'Hello, {user_firstname}!') + \
-           f"\n\nThis is {link(title='Aioplate', url='https://github.com/devkarych/aioplate')}." \
-           f"\nAuthor: @karych."
+    repo_url = link(title='Aioplate', url='https://github.com/devkarych/aioplate')
+    return bold(f'Hello, {user_firstname}!') + f"\n\nThis is {repo_url}.\nAuthor: @karych."
