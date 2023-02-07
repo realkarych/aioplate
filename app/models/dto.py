@@ -39,7 +39,7 @@ class User:
         """
 
         return cls(
-            id=int(user.id),
+            id=int(str(user.id)),
             username=str(user.username),
             firstname=str(user.firstname),
             lastname=str(user.lastname)
