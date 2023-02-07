@@ -13,13 +13,13 @@ from app.core.navigations.command import set_bot_commands
 from app.core.updates import worker
 from app.services.database.connector import setup_get_pool
 from app.settings.config import Config, load_config
-from app.settings.paths import ROOT_DIR
 
 
 async def main() -> None:
     """Starts app & polling."""
 
-    # In prod, set log-level to WARNING; add `filename=` arg and write your logs to file instead of stdout
+    # In prod, set log-level to WARNING; add `filename=` arg and write your logs to
+    # file instead of stdout.
     # Example: filename=f"{ROOT_DIR}/error.log".
     logging.basicConfig(
         level=logging.INFO,

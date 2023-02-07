@@ -3,7 +3,6 @@ from typing import TypeVar, Type, Generic
 from sqlalchemy import delete, func
 from sqlalchemy.ext.asyncio import async_sessionmaker
 from sqlalchemy.future import select
-from sqlalchemy.orm import sessionmaker
 
 from app.services.database.base import Base
 

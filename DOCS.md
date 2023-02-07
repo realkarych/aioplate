@@ -34,11 +34,11 @@
 
 6) It is highly recommended for deployment (Ubuntu / Debian):
     - Configure app.service file.
-      - Set App name.
-      - Set Path to project.
-      - Check path to poetry env: ```poetry shell```
-        ```which python```
-      - Copy this path and replace PATH variable in app.service.
+        - Set App name.
+        - Set Path to project.
+        - Check path to poetry env: ```poetry shell```
+          ```which python```
+        - Copy this path and replace PATH variable in app.service.
     - `cp app.service etc/systemd/system/YOUR_APP_NAME.service`
     - `sudo systemctl enable YOUR_APP_NAME.service`
     - `sudo systemctl start YOUR_APP_NAME.service`

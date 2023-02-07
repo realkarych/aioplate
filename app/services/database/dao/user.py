@@ -1,5 +1,4 @@
 from sqlalchemy.ext.asyncio import async_sessionmaker
-from sqlalchemy.orm import sessionmaker
 
 from app.models import dto
 from app.models.database import User
