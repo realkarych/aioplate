@@ -40,6 +40,7 @@ class Commands(BaseCommandList):
     """
 
     start = Command(name='start', description='Start Bot')
+    fetch = Command(name='fetch', description='Fetch Database [Avoid to use in real project]')
 
 
 async def set_bot_commands(bot: Bot) -> None:

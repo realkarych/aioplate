@@ -1,6 +1,5 @@
 import types
 from abc import ABC, abstractmethod
-from typing import Iterable
 
 from aiogram import Dispatcher
 
@@ -31,8 +30,6 @@ class DefaultHandlersFactory(HandlersFactory):
         it skips with error log message.
         :param handlers: .py handler-modules with implemented register_handlers() method.
         """
-
-        handlers: Iterable[types.ModuleType]
 
         for handler in handlers:
             if isinstance(handler, types.ModuleType):

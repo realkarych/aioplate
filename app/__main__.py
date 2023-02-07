@@ -19,11 +19,11 @@ from app.settings.paths import ROOT_DIR
 async def main() -> None:
     """Starts app & polling."""
 
-    # In prod, add `filename=` arg and write your logs to file instead of stdout
+    # In prod, set log-level to WARNING; add `filename=` arg and write your logs to file instead of stdout
+    # Example: filename=f"{ROOT_DIR}/error.log".
     logging.basicConfig(
-        level=logging.WARNING,
-        format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
-        filename=f"{ROOT_DIR}/error.log"
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
     )
 
     config: Config = load_config()

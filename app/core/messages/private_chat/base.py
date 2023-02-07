@@ -1,7 +1,7 @@
 from aiogram.utils.markdown import hbold as bold, hlink as link
 
 
-def welcome(user_firstname: str) -> str:
+def welcome(user_firstname: str | None) -> str:
     """
     :param user_firstname:
     :return: welcome message to user

@@ -1,3 +1,4 @@
+from sqlalchemy.ext.asyncio import async_sessionmaker
 from sqlalchemy.orm import sessionmaker
 
 from app.models import dto
@@ -9,7 +10,7 @@ from app.services.database.dao.base import BaseDAO
 class UserDAO(BaseDAO[User]):
     """ORM queries for users table"""
 
-    def __init__(self, session: sessionmaker):
+    def __init__(self, session: async_sessionmaker):
         super().__init__(User, session)
 
     async def add_user(self, user: dto.User) -> None:
