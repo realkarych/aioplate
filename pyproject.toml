@@ -11,6 +11,7 @@ asyncpg = "^0.26.0"
 sqlalchemy = "==2.0"
 alembic = "==1.9.2"
 tzlocal = "^4.2"
+greenlet = "*"
 
 
 [tool.poetry.group.dev.dependencies]
