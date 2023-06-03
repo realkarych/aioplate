@@ -4,8 +4,8 @@
 
 # Default stack for Aioplate
 
-- **Python 3.9.x** and higher
-- **Aiogram 2.x**
+- **Python 3.11** and higher
+- **Aiogram 3.x**
 - **Aiogram MemoryStorage** for temporary data. You can replace it with **RedisStorage2** & aioredis.
 - **PostgreSQL** (**SQLAlchemy** as an ORM + **asyncpg** as a driver + **alembic** as a migration service).
 
@@ -16,15 +16,15 @@
     1) Rename `app.ini.example` to `app.ini`. Don't worry, app.ini already added to gitignore.
     2) Configure app.ini vars. Bot parse_mode, redis params are optional and you can remove it if you want.
 3) Configure system:
-    - Install postgreSQL, systemd, Python 3.9.x
+    - Install postgreSQL, systemd, Python 3.11, poetry.
 
 4) Configure Postgres & alembic:
     - PSQL: `CREATE DATABASE your_database_name;`
     - Already made:  `alembic init --template async migrations`
+    - Add alembic.ini to gitignore
     - Open alembic.ini -> `sqlalchemy.url = postgresql+asyncpg://user:pass@localhost/dbname`
     - `alembic revision --autogenerate -m "init"`
     - `alembic upgrade head`
-    - Add alembic.ini to gitignore
 
 5) Configure environment with poetry:
     - Note: You need to have Poetry installed: `pip install poetry`
