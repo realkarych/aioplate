@@ -1,7 +1,7 @@
 from typing import TypeVar, Type, Generic
 
 from sqlalchemy import delete, func
-from sqlalchemy.ext.asyncio import async_sessionmaker
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
 from app.services.database.base import Base
@@ -12,7 +12,7 @@ Model = TypeVar('Model', Base, Base)
 class BaseDAO(Generic[Model]):
     """ORM queries for abstract table"""
 
-    def __init__(self, model: Type[Model], session: async_sessionmaker):
+    def __init__(self, model: Type[Model], session: AsyncSession):
         """
         :param model:
         :param session:
@@ -26,21 +26,18 @@ class BaseDAO(Generic[Model]):
         :return: List of models.
         """
 
-        async with self._session() as session:
-            result = await session.execute(select(self._model))
-            return [i for i in result.all()]
+        result = await self._session.execute(select(self._model))
+        return [i for i in result.all()]
 
     async def get_by_id(self, id_: int) -> Model:
         """
         :param id_: input id
         :return:
         """
-
-        async with self._session() as session:
-            result = await session.execute(
-                select(self._model).where(self._model.id == id_)
-            )
-            return result.scalar_one()
+        result = await self._session.execute(
+            select(self._model).where(self._model.id == id_)
+        )
+        return result.scalar_one()
 
     async def delete_all(self) -> None:
         """
@@ -48,17 +45,15 @@ class BaseDAO(Generic[Model]):
         :return:
         """
 
-        async with self._session() as session:
-            await session.execute(delete(self._model))
+        await self._session.execute(delete(self._model))
 
     async def count(self) -> int:
         """
         :return: count of model.
         """
 
-        async with self._session() as session:
-            result = await session.execute(select(func.count(self._model.id)))
-            return result.scalar_one()
+        result = await self._session.execute(select(func.count(self._model.id)))
+        return result.scalar_one()
 
     async def commit(self) -> None:
         """
@@ -66,5 +61,4 @@ class BaseDAO(Generic[Model]):
         :return:
         """
 
-        async with self._session() as session:
-            await session.commit()
+        await self._session.commit()

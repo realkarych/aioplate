@@ -4,13 +4,12 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from aiogram.fsm.storage.memory import MemoryStorage
 
-from app.core import middlewares
-from app.core.handlers.factory import DefaultHandlersFactory
+from app.core.handlers import factory
 from app.core.handlers.private_chat import base
+from app.core.middlewares.db import DbSessionMiddleware
 from app.core.navigations.command import set_bot_commands
-from app.core.updates import worker
 from app.services.database.connector import setup_get_pool
 from app.settings.config import Config, load_config
 
@@ -29,21 +28,22 @@ async def main() -> None:
     config: Config = load_config()
 
     bot = Bot(config.bot.token, parse_mode=config.bot.parse_mode)
-    bot["db"] = await setup_get_pool(db_uri=config.db.get_uri())
-    dp = Dispatcher(bot=bot, storage=MemoryStorage())
     await set_bot_commands(bot=bot)
 
-    # Middlewares setup. Register middlewares provided to __init__.py in middlewares package.
-    middlewares.setup(dispatcher=dp)
+    dp = Dispatcher(bot=bot, storage=MemoryStorage())
+    sessionmaker = await setup_get_pool(db_uri=config.db.get_uri())
+    dp.message.middleware(DbSessionMiddleware(sessionmaker))
+    dp.message.outer_middleware(DbSessionMiddleware(sessionmaker))
+    dp.edited_message.outer_middleware(DbSessionMiddleware(sessionmaker))
+
     # Provide your default handler-modules into register() func.
-    DefaultHandlersFactory(dp).register(base, )
+    factory.register(dp, base, )
 
     try:
-        await dp.start_polling(allowed_updates=worker.get_handled_updates(dp))
+        await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
         await dp.storage.close()
-        await dp.storage.wait_closed()
-        await (await bot.get_session()).close()
+        await bot.session.close()
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ class ResizedReplyKeyboard(ReplyKeyboardMarkup):
 default_menu = ResizedReplyKeyboard(
     keyboard=[
         [
-            KeyboardButton(reply.some_text)
+            KeyboardButton(text=reply.some_text)
         ],
     ]
 )

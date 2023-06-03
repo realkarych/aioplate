@@ -6,11 +6,11 @@ authors = ["Andrey Karchevsky <karych@karych.ru>"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-aiogram = "==2.24"
-asyncpg = "^0.26.0"
-sqlalchemy = "==2.0"
-alembic = "==1.9.2"
-tzlocal = "^4.2"
+aiogram = "==3.0.0b7"
+asyncpg = "^0.27.0"
+sqlalchemy = "==2.0.15"
+alembic = "==1.11.1"
+tzlocal = "^5.0.1"
 greenlet = "*"
 
 
