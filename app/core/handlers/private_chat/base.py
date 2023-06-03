@@ -1,6 +1,6 @@
 import logging
 
-from aiogram import types, Dispatcher, Router, F
+from aiogram import types, Router
 from aiogram.enums import ChatType
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
