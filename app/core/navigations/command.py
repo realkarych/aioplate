@@ -46,8 +46,10 @@ class Commands(BaseCommandList):
 async def set_bot_commands(bot: Bot) -> None:
     """
     Creates a commands' list (shortcut) in Telegram app menu.
-    :param bot: Initialized bot instance.
     """
 
-    commands = [command().to_bot_command() for command in Commands]
-    await bot.set_my_commands(commands, scope=BotCommandScopeDefault())
+    commands: list[BotCommand] = [command().to_bot_command() for command in Commands]
+    await bot.set_my_commands(
+        commands=commands,
+        scope=BotCommandScopeDefault()  # pyright: ignore
+    )

@@ -50,8 +50,8 @@ def get_user_from_message(message: Message) -> User:
     """Returns user obj from aiogram message."""
 
     return User(
-        id=message.from_user.id,
-        username=message.from_user.username,
-        firstname=message.from_user.first_name,
-        lastname=message.from_user.last_name
+        id=message.from_user.id,  # pyright: ignore
+        username=message.from_user.username,  # pyright: ignore
+        firstname=message.from_user.first_name,  # pyright: ignore
+        lastname=message.from_user.last_name  # pyright: ignore
     )

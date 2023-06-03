@@ -1,6 +1,6 @@
 from typing import TypeVar, Type, Generic
 
-from sqlalchemy import delete, func
+from sqlalchemy import delete, func, Row
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
@@ -21,7 +21,7 @@ class BaseDAO(Generic[Model]):
         self._model = model
         self._session = session
 
-    async def get_all(self) -> list[Model]:
+    async def get_all(self) -> list[Row[tuple[Model]]]:
         """
         :return: List of models.
         """
