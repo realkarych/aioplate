@@ -5,11 +5,12 @@ description = "Telegram Bot template"
 authors = ["Andrey Karchevsky <karych@karych.ru>"]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "==3.11.4"
 aiogram = "==3.0.0b7"
 asyncpg = "^0.27.0"
 sqlalchemy = "==2.0.15"
 alembic = "==1.11.1"
+fluentogram = "==1.1.6"
 tzlocal = "^5.0.1"
 greenlet = "*"
 

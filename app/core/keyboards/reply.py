@@ -1,6 +1,5 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
-
-from app.core.navigations import reply
+from fluentogram import TranslatorRunner
 
 
 class ResizedReplyKeyboard(ReplyKeyboardMarkup):
@@ -15,10 +14,11 @@ class ResizedReplyKeyboard(ReplyKeyboardMarkup):
 
 
 # Customize your keyboard here
-default_menu = ResizedReplyKeyboard(
-    keyboard=[
-        [
-            KeyboardButton(text=reply.some_text)
-        ],
-    ]
-)
+def default_menu(i18n: TranslatorRunner):
+    return ResizedReplyKeyboard(
+        keyboard=[
+            [
+                KeyboardButton(text=i18n.button.something)
+            ],
+        ]
+    )
