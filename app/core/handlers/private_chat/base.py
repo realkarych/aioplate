@@ -21,7 +21,7 @@ async def cmd_start(m: types.Message, i18n: TranslatorRunner, session: AsyncSess
     dao = UserDAO(session=session)
     await dao.add_user(user)
 
-    await m.answer(i18n.welcome(user_firstname=user.firstname), reply_markup=reply.default_menu(i18n))
+    await m.answer(str(i18n.welcome(user_firstname=user.firstname)), reply_markup=reply.default_menu(i18n))
 
 
 def register() -> Router:

@@ -18,7 +18,7 @@ def default_menu(i18n: TranslatorRunner):
     return ResizedReplyKeyboard(
         keyboard=[
             [
-                KeyboardButton(text=i18n.button.something)
+                KeyboardButton(text=str(i18n.button.something))
             ],
         ]
     )
