@@ -19,9 +19,10 @@ from app.settings.config import Config, load_config
 async def main() -> None:
     """Starts app & polling."""
 
-    # In prod, set log-level to WARNING; add `filename=` arg and write your logs to
+    # On production, set log-level to ERROR; add `filename=` arg and write your logs to
     # file instead of stdout.
     # Example: filename=f"{ROOT_DIR}/error.log".
+    # Another way: checking systemctl logs.
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"

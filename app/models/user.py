@@ -9,9 +9,9 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(BigInteger, primary_key=True, unique=True, autoincrement=False)  # Telegram id
-    username = Column(String, default=None)
-    firstname = Column(String, default=None)
-    lastname = Column(String, default=None)
+    username = Column(String(32), default=None, unique=False)
+    firstname = Column(String(256), default=None, unique=False)
+    lastname = Column(String(256), default=None, unique=False)
     registered_date = Column(DateTime(timezone=True), server_default=func.now())
 
     def __repr__(self) -> str:
