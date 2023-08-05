@@ -5,23 +5,22 @@
 # App Name
 
 ## App description
-
 ...
 
 ## Stack
-
-...
+- Python3.11
+- Aiogram3
+- PostgreSQL + sqlalchemy + asyncpg + alembic
 
 ## Installation guide
-
-...
+Check it in DOCS.md
 
 ## Links
-
-...
+- Template: https://github.com/yakarych/aioplate.
 
 ## Screenshots & video-previews
 
 ...
 
 ## Credits
+...
