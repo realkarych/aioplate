@@ -28,7 +28,8 @@
 5) Configure environment with poetry:
     - Note: You need to have Poetry installed: `python3 -m pip install poetry`
     - Install dependencies: `poetry install`
-    - Run app: `poetry run python -m app` *(only for testing your app. On production use launching by systemd service or create docker image)*. `app` is an entry point to the project.
+    - Run app: `poetry run python -m app` *(only for testing your app. On production use launching by systemd service or
+      create docker image)*. `app` is an entry point to the project.
 
 6) Deployment:
     - Configure app.service file.
