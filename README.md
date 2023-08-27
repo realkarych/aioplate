@@ -13,6 +13,7 @@
 - Python3.11
 - Aiogram3
 - PostgreSQL + sqlalchemy + asyncpg + alembic
+- Fluentogram (i18n mechanism)
 
 ## Installation guide
 
