@@ -1,6 +1,8 @@
 # Aioplate. <a href="https://github.com/realkarych/aioplate/blob/main/DOCS.md">Read the docs</a>
 
-### Below is a universal template for your project description.
+**Example of template usage:** https://github.com/realkarych/postamt.
+
+**Below is a universal template for your project description.**
 
 # App Name
 
